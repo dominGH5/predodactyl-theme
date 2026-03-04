@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "ES2018",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "lib": ["DOM", "DOM.Iterable", "ES2018"],
+    "jsx": "react",
+    "strict": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "declaration": false,
+    "sourceMap": true,
+    "outDir": "./public/assets",
+    "rootDir": "./resources/scripts",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["resources/scripts/*"],
+      "@theme/*": ["resources/scripts/components/theme/*"]
+    }
+  },
+  "include": [
+    "resources/scripts/**/*.ts",
+    "resources/scripts/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "public"
+  ]
+}
