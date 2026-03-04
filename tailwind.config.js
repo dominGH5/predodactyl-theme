@@ -10,6 +10,7 @@
 // =============================================================================
 
 const defaultTheme = require('tailwindcss/defaultTheme');
+const lineClamp = require('@tailwindcss/line-clamp');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -228,6 +229,7 @@ module.exports = {
     },
   },
   plugins: [
+    lineClamp,
     // Custom plugin for glassmorphism + Predodactyl utilities
     function ({ addUtilities }) {
       addUtilities({
