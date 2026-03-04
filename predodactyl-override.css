@@ -1,0 +1,1410 @@
+/* =============================================================================
+   PREDODACTYL THEME — COMPLETE VISUAL OVERRIDE
+   Wersja: 2.0.0 | Panel nie do poznania
+   
+   Glassmorphism + Neon Glow + Animated Gradients + Custom Everything
+   ============================================================================= */
+
+/* ---- Google Fonts Import ---- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+/* ---- CSS Custom Properties ---- */
+:root {
+  /* Core Colors */
+  --pred-bg-primary: #050508;
+  --pred-bg-secondary: #0a0a10;
+  --pred-bg-tertiary: #0f0f18;
+  --pred-bg-card: #0c0c14;
+  --pred-bg-card-hover: #111120;
+  --pred-bg-input: #0a0a12;
+  --pred-bg-sidebar: #08080e;
+  
+  /* Accent Colors */
+  --pred-purple: #7c3aed;
+  --pred-purple-light: #a78bfa;
+  --pred-purple-dark: #5b21b6;
+  --pred-cyan: #06b6d4;
+  --pred-cyan-light: #22d3ee;
+  --pred-cyan-dark: #0891b2;
+  --pred-pink: #ec4899;
+  --pred-pink-light: #f472b6;
+  --pred-emerald: #10b981;
+  --pred-amber: #f59e0b;
+  --pred-red: #ef4444;
+  
+  /* Text Colors */
+  --pred-text-primary: #f1f5f9;
+  --pred-text-secondary: #94a3b8;
+  --pred-text-muted: #64748b;
+  
+  /* Borders */
+  --pred-border: rgba(124, 58, 237, 0.12);
+  --pred-border-hover: rgba(124, 58, 237, 0.25);
+  --pred-border-active: rgba(124, 58, 237, 0.4);
+  
+  /* Glassmorphism */
+  --pred-glass-bg: rgba(12, 12, 20, 0.65);
+  --pred-glass-bg-strong: rgba(12, 12, 20, 0.85);
+  --pred-glass-blur: 24px;
+  
+  /* Shadows */
+  --pred-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --pred-shadow-md: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --pred-shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.5);
+  --pred-shadow-glow: 0 0 30px rgba(124, 58, 237, 0.15);
+  --pred-shadow-glow-cyan: 0 0 30px rgba(6, 182, 212, 0.15);
+  
+  /* Gradients */
+  --pred-gradient-primary: linear-gradient(135deg, #7c3aed 0%, #06b6d4 100%);
+  --pred-gradient-secondary: linear-gradient(135deg, #ec4899 0%, #7c3aed 100%);
+  --pred-gradient-dark: linear-gradient(180deg, #050508 0%, #0a0a10 50%, #0f0f18 100%);
+  --pred-gradient-card: linear-gradient(145deg, rgba(124, 58, 237, 0.05) 0%, rgba(6, 182, 212, 0.03) 100%);
+  --pred-gradient-shine: linear-gradient(45deg, transparent 30%, rgba(124, 58, 237, 0.06) 50%, transparent 70%);
+  
+  /* Transitions */
+  --pred-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --pred-transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --pred-transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Border Radius */
+  --pred-radius-sm: 8px;
+  --pred-radius-md: 12px;
+  --pred-radius-lg: 16px;
+  --pred-radius-xl: 20px;
+  --pred-radius-2xl: 24px;
+}
+
+/* =============================================================================
+   ANIMATIONS & KEYFRAMES
+   ============================================================================= */
+
+@keyframes pred-gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes pred-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes pred-pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(124, 58, 237, 0.1); }
+  50% { box-shadow: 0 0 40px rgba(124, 58, 237, 0.25); }
+}
+
+@keyframes pred-shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes pred-border-flow {
+  0% { border-color: rgba(124, 58, 237, 0.2); }
+  33% { border-color: rgba(6, 182, 212, 0.2); }
+  66% { border-color: rgba(236, 72, 153, 0.2); }
+  100% { border-color: rgba(124, 58, 237, 0.2); }
+}
+
+@keyframes pred-spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pred-fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pred-slide-in-right {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pred-scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pred-orb-float-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(50px, -30px) scale(1.1); }
+  50% { transform: translate(-20px, -60px) scale(0.9); }
+  75% { transform: translate(-40px, 20px) scale(1.05); }
+}
+
+@keyframes pred-orb-float-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(-60px, 40px) scale(0.95); }
+  50% { transform: translate(30px, 70px) scale(1.1); }
+  75% { transform: translate(50px, -20px) scale(1); }
+}
+
+@keyframes pred-status-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.5); }
+}
+
+@keyframes pred-typing {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes pred-noise {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-1px, 1px); }
+  20% { transform: translate(1px, -1px); }
+  30% { transform: translate(-1px, -1px); }
+  40% { transform: translate(1px, 1px); }
+  50% { transform: translate(-1px, 0px); }
+  60% { transform: translate(1px, 0px); }
+  70% { transform: translate(0px, 1px); }
+  80% { transform: translate(0px, -1px); }
+  90% { transform: translate(1px, 1px); }
+}
+
+/* =============================================================================
+   GLOBAL BODY & ROOT STYLES
+   ============================================================================= */
+
+html {
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(124, 58, 237, 0.3) rgba(5, 5, 8, 0.5) !important;
+}
+
+body {
+  background: var(--pred-bg-primary) !important;
+  color: var(--pred-text-primary) !important;
+  font-family: 'Inter', 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  overflow-x: hidden !important;
+}
+
+/* Background animated gradient overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(ellipse 80% 60% at 10% 20%, rgba(124, 58, 237, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 90% 80%, rgba(6, 182, 212, 0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 50% 50%, rgba(236, 72, 153, 0.02) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+  animation: pred-gradient-shift 20s ease infinite;
+  background-size: 200% 200%;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px !important;
+  height: 6px !important;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(5, 5, 8, 0.5) !important;
+  border-radius: 3px !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--pred-purple), var(--pred-cyan)) !important;
+  border-radius: 3px !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--pred-purple-light), var(--pred-cyan-light)) !important;
+}
+
+/* Selection */
+::selection {
+  background: rgba(124, 58, 237, 0.3) !important;
+  color: #fff !important;
+}
+
+/* =============================================================================
+   NAVIGATION / TOP BAR
+   ============================================================================= */
+
+/* Main navigation bar */
+nav, .navbar, [class*="NavigationBar"],
+header > div:first-child,
+div[class*="navigation-bar"],
+div[class*="NavigationBar"] {
+  background: var(--pred-glass-bg-strong) !important;
+  backdrop-filter: blur(var(--pred-glass-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--pred-glass-blur)) !important;
+  border-bottom: 1px solid var(--pred-border) !important;
+  box-shadow: var(--pred-shadow-md) !important;
+}
+
+/* Navigation links */
+nav a, .navbar a,
+div[class*="NavigationBar"] a,
+div[class*="navigation"] a {
+  color: var(--pred-text-secondary) !important;
+  transition: var(--pred-transition) !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.01em !important;
+  position: relative !important;
+}
+
+nav a:hover, .navbar a:hover,
+div[class*="NavigationBar"] a:hover,
+div[class*="navigation"] a:hover {
+  color: var(--pred-text-primary) !important;
+  text-shadow: 0 0 20px rgba(124, 58, 237, 0.4) !important;
+}
+
+/* Active nav link */
+nav a[class*="active"], nav a.router-link-active,
+div[class*="NavigationBar"] a[class*="active"] {
+  color: var(--pred-purple-light) !important;
+  text-shadow: 0 0 20px rgba(124, 58, 237, 0.3) !important;
+}
+
+/* Logo / Brand */
+nav img, .navbar img,
+div[class*="NavigationBar"] img,
+div[class*="logo"] img {
+  filter: brightness(1.2) drop-shadow(0 0 8px rgba(124, 58, 237, 0.3)) !important;
+  transition: var(--pred-transition) !important;
+}
+
+nav img:hover, .navbar img:hover {
+  filter: brightness(1.4) drop-shadow(0 0 16px rgba(124, 58, 237, 0.5)) !important;
+  transform: scale(1.05) !important;
+}
+
+/* =============================================================================
+   SIDEBAR / SUB-NAVIGATION
+   ============================================================================= */
+
+div[class*="SubNavigation"],
+div[class*="sub-navigation"],
+div[class*="Sidebar"],
+aside {
+  background: var(--pred-bg-sidebar) !important;
+  border-right: 1px solid var(--pred-border) !important;
+  box-shadow: var(--pred-shadow-sm) !important;
+}
+
+div[class*="SubNavigation"] a,
+div[class*="sub-navigation"] a,
+aside a {
+  color: var(--pred-text-secondary) !important;
+  transition: var(--pred-transition) !important;
+  border-radius: var(--pred-radius-sm) !important;
+  margin: 2px 8px !important;
+  padding: 8px 12px !important;
+}
+
+div[class*="SubNavigation"] a:hover,
+div[class*="sub-navigation"] a:hover,
+aside a:hover {
+  color: var(--pred-text-primary) !important;
+  background: rgba(124, 58, 237, 0.08) !important;
+  transform: translateX(3px) !important;
+}
+
+div[class*="SubNavigation"] a[class*="active"],
+aside a[class*="active"] {
+  color: var(--pred-purple-light) !important;
+  background: rgba(124, 58, 237, 0.12) !important;
+  border-left: 3px solid var(--pred-purple) !important;
+  box-shadow: inset 0 0 20px rgba(124, 58, 237, 0.05) !important;
+}
+
+/* =============================================================================
+   LOGIN PAGE
+   ============================================================================= */
+
+/* Login container */
+div[class*="LoginContainer"],
+div[class*="login-container"],
+#app > div:first-child[class*="flex"],
+div[class*="LoginFormContainer"] {
+  background: var(--pred-bg-primary) !important;
+  min-height: 100vh !important;
+}
+
+/* Login background with animated orbs */
+div[class*="LoginContainer"]::before,
+div[class*="login"]::before {
+  content: '' !important;
+  position: fixed !important;
+  top: -50% !important;
+  left: -50% !important;
+  width: 200% !important;
+  height: 200% !important;
+  background:
+    radial-gradient(circle 400px at 20% 30%, rgba(124, 58, 237, 0.12) 0%, transparent 60%),
+    radial-gradient(circle 300px at 80% 70%, rgba(6, 182, 212, 0.08) 0%, transparent 60%),
+    radial-gradient(circle 350px at 60% 20%, rgba(236, 72, 153, 0.06) 0%, transparent 60%) !important;
+  animation: pred-orb-float-1 25s ease-in-out infinite !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+
+/* Login form card */
+div[class*="LoginFormContainer"] > div,
+div[class*="login"] form,
+form[class*="login"],
+div[class*="LoginContainer"] > div > div {
+  background: var(--pred-glass-bg) !important;
+  backdrop-filter: blur(30px) !important;
+  -webkit-backdrop-filter: blur(30px) !important;
+  border: 1px solid var(--pred-border) !important;
+  border-radius: var(--pred-radius-xl) !important;
+  box-shadow: 
+    var(--pred-shadow-lg),
+    0 0 60px rgba(124, 58, 237, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03) !important;
+  animation: pred-scale-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Login form shimmer effect */
+div[class*="LoginFormContainer"] > div::before,
+div[class*="LoginContainer"] > div > div::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: var(--pred-gradient-shine) !important;
+  animation: pred-shimmer 6s ease-in-out infinite !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
+
+/* Login title */
+div[class*="LoginContainer"] h2,
+div[class*="login"] h1,
+div[class*="login"] h2 {
+  background: var(--pred-gradient-primary) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  font-family: 'Space Grotesk', 'Inter', sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+  font-size: 1.75rem !important;
+}
+
+/* =============================================================================
+   BUTTONS — COMPLETE RESTYLE
+   ============================================================================= */
+
+/* Primary buttons */
+button, [type="submit"], [type="button"],
+a[class*="Button"], div[class*="Button"],
+button[class*="primary"], button[class*="Primary"] {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em !important;
+  border-radius: var(--pred-radius-md) !important;
+  transition: var(--pred-transition) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Green / Primary action buttons */
+button[class*="green"], button[class*="primary"],
+button[class*="Primary"], [type="submit"],
+button.bg-green-500, button.bg-green-600,
+button[class*="success"] {
+  background: var(--pred-gradient-primary) !important;
+  border: none !important;
+  color: #fff !important;
+  box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+}
+
+button[class*="green"]:hover, button[class*="primary"]:hover,
+button[class*="Primary"]:hover, [type="submit"]:hover,
+button.bg-green-500:hover, button.bg-green-600:hover,
+button[class*="success"]:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4) !important;
+  filter: brightness(1.1) !important;
+}
+
+button[class*="green"]:active, button[class*="primary"]:active,
+[type="submit"]:active {
+  transform: translateY(0px) !important;
+  box-shadow: 0 2px 10px rgba(124, 58, 237, 0.3) !important;
+}
+
+/* Red / Danger buttons */
+button[class*="red"], button[class*="danger"],
+button[class*="Danger"], button[class*="delete"],
+button.bg-red-500, button.bg-red-600 {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+  border: none !important;
+  color: #fff !important;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3) !important;
+}
+
+button[class*="red"]:hover, button[class*="danger"]:hover,
+button[class*="Danger"]:hover, button[class*="delete"]:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4) !important;
+  filter: brightness(1.1) !important;
+}
+
+/* Secondary / Ghost buttons */
+button[class*="secondary"], button[class*="Secondary"],
+button[class*="ghost"], button[class*="outline"] {
+  background: rgba(124, 58, 237, 0.08) !important;
+  border: 1px solid var(--pred-border) !important;
+  color: var(--pred-text-primary) !important;
+}
+
+button[class*="secondary"]:hover, button[class*="Secondary"]:hover,
+button[class*="ghost"]:hover {
+  background: rgba(124, 58, 237, 0.15) !important;
+  border-color: var(--pred-border-hover) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Button shimmer on hover */
+button::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent) !important;
+  transition: left 0.5s ease !important;
+}
+
+button:hover::after {
+  left: 100% !important;
+}
+
+/* =============================================================================
+   INPUTS & FORMS
+   ============================================================================= */
+
+input[type="text"], input[type="password"], input[type="email"],
+input[type="number"], input[type="url"], input[type="search"],
+input[type="tel"], textarea, select,
+div[class*="Input"] input,
+div[class*="input"] input {
+  background: var(--pred-bg-input) !important;
+  border: 1px solid var(--pred-border) !important;
+  border-radius: var(--pred-radius-md) !important;
+  color: var(--pred-text-primary) !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.875rem !important;
+  transition: var(--pred-transition) !important;
+  padding: 10px 14px !important;
+  outline: none !important;
+}
+
+input[type="text"]:focus, input[type="password"]:focus,
+input[type="email"]:focus, input[type="number"]:focus,
+input[type="url"]:focus, input[type="search"]:focus,
+textarea:focus, select:focus {
+  border-color: var(--pred-purple) !important;
+  box-shadow: 
+    0 0 0 3px rgba(124, 58, 237, 0.15),
+    0 0 20px rgba(124, 58, 237, 0.1) !important;
+  background: rgba(12, 12, 20, 0.8) !important;
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--pred-text-muted) !important;
+  font-style: italic !important;
+}
+
+/* Labels */
+label {
+  color: var(--pred-text-secondary) !important;
+  font-weight: 500 !important;
+  font-size: 0.8rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  margin-bottom: 6px !important;
+}
+
+/* Checkboxes & Toggles */
+input[type="checkbox"] {
+  accent-color: var(--pred-purple) !important;
+}
+
+/* Select dropdowns */
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%237c3aed' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 12px center !important;
+  background-size: 16px !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  padding-right: 40px !important;
+}
+
+/* =============================================================================
+   SERVER CARDS / DASHBOARD
+   ============================================================================= */
+
+/* Main content area */
+div[class*="ContentContainer"],
+div[class*="content-container"],
+main, #app > div {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* Server row / card — the main server listing */
+a[class*="ServerRow"], div[class*="ServerRow"],
+a[class*="server-row"], div[class*="server-row"],
+div[class*="server_"], a[class*="server_"],
+div[class*="ServerCard"], a[class*="ServerCard"] {
+  background: var(--pred-glass-bg) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid var(--pred-border) !important;
+  border-radius: var(--pred-radius-lg) !important;
+  padding: 18px 22px !important;
+  margin-bottom: 10px !important;
+  transition: var(--pred-transition) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  animation: pred-fade-in 0.5s ease-out !important;
+  box-shadow: var(--pred-shadow-sm) !important;
+}
+
+a[class*="ServerRow"]:hover, div[class*="ServerRow"]:hover,
+a[class*="server-row"]:hover, div[class*="server_"]:hover,
+a[class*="ServerCard"]:hover {
+  border-color: var(--pred-border-hover) !important;
+  background: var(--pred-bg-card-hover) !important;
+  transform: translateY(-3px) translateX(2px) !important;
+  box-shadow: 
+    var(--pred-shadow-lg),
+    var(--pred-shadow-glow) !important;
+}
+
+/* Server card gradient line on top */
+a[class*="ServerRow"]::before, div[class*="ServerRow"]::before,
+a[class*="server-row"]::before, div[class*="server_"]::before,
+a[class*="ServerCard"]::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 2px !important;
+  background: var(--pred-gradient-primary) !important;
+  opacity: 0 !important;
+  transition: var(--pred-transition) !important;
+}
+
+a[class*="ServerRow"]:hover::before, div[class*="ServerRow"]:hover::before,
+a[class*="server-row"]:hover::before, a[class*="ServerCard"]:hover::before {
+  opacity: 1 !important;
+}
+
+/* Server name */
+a[class*="ServerRow"] p:first-child,
+div[class*="ServerRow"] p:first-child,
+a[class*="ServerCard"] p:first-child,
+div[class*="server_"] p:first-child,
+p[class*="server-name"] {
+  font-weight: 700 !important;
+  font-size: 1.05rem !important;
+  letter-spacing: -0.01em !important;
+  color: var(--pred-text-primary) !important;
+}
+
+/* Server status indicators */
+div[class*="StatusIndicator"],
+span[class*="status"],
+div[class*="status-indicator"],
+div[class*="StatusIndicatorBox"] {
+  border-radius: 50% !important;
+  box-shadow: 0 0 10px currentColor !important;
+  animation: pred-status-pulse 2s ease-in-out infinite !important;
+}
+
+/* Online status */
+div[class*="bg-green"], span[class*="bg-green"],
+div[class*="running"] div[class*="status"],
+.bg-green-500 {
+  background: var(--pred-emerald) !important;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.5) !important;
+}
+
+/* Offline status */
+div[class*="bg-red"], span[class*="bg-red"],
+div[class*="offline"] div[class*="status"],
+.bg-red-500 {
+  background: var(--pred-red) !important;
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.5) !important;
+}
+
+/* Starting status */
+div[class*="bg-yellow"], span[class*="bg-yellow"],
+.bg-yellow-500 {
+  background: var(--pred-amber) !important;
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.5) !important;
+}
+
+/* =============================================================================
+   CONSOLE / TERMINAL
+   ============================================================================= */
+
+div[class*="Console"], div[class*="console"],
+div[class*="terminal"], div[class*="Terminal"],
+.xterm, .xterm-viewport, .xterm-screen {
+  background: #030306 !important;
+  border-radius: var(--pred-radius-lg) !important;
+  border: 1px solid var(--pred-border) !important;
+  box-shadow: 
+    inset 0 2px 20px rgba(0, 0, 0, 0.5),
+    var(--pred-shadow-md) !important;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace !important;
+}
+
+/* Console container */
+div[class*="console-container"],
+div[class*="ConsoleContainer"] {
+  background: var(--pred-bg-card) !important;
+  border-radius: var(--pred-radius-xl) !important;
+  border: 1px solid var(--pred-border) !important;
+  padding: 4px !important;
+  box-shadow: var(--pred-shadow-lg) !important;
+}
+
+/* Console input */
+div[class*="console"] input,
+div[class*="Console"] input,
+input[class*="console-input"],
+input[class*="ConsoleInput"] {
+  background: rgba(5, 5, 8, 0.8) !important;
+  border: 1px solid var(--pred-border) !important;
+  border-radius: var(--pred-radius-md) !important;
+  color: var(--pred-cyan-light) !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.85rem !important;
+  padding: 12px 16px !important;
+}
+
+div[class*="console"] input:focus,
+div[class*="Console"] input:focus {
+  border-color: var(--pred-cyan) !important;
+  box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.15) !important;
+}
+
+/* Console command prefix */
+div[class*="console"] input::placeholder {
+  color: var(--pred-text-muted) !important;
+  font-family: 'JetBrains Mono', monospace !important;
+}
+
+/* Power buttons in console */
+button[class*="power"], button[class*="Power"],
+div[class*="PowerControls"] button,
+div[class*="power-controls"] button {
+  border-radius: var(--pred-radius-md) !important;
+  font-weight: 600 !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+/* =============================================================================
+   FILE MANAGER
+   ============================================================================= */
+
+div[class*="FileManager"], div[class*="file-manager"],
+div[class*="FileManagerContainer"] {
+  background: var(--pred-bg-card) !important;
+  border-radius: var(--pred-radius-xl) !important;
+  border: 1px solid var(--pred-border) !important;
+  box-shadow: var(--pred-shadow-md) !important;
+  overflow: hidden !important;
+}
+
+/* File rows */
+div[class*="FileRow"], div[class*="file-row"],
+a[class*="FileRow"], div[class*="FileObjectRow"],
+tr[class*="file"], div[class*="file-object"] {
+  border-bottom: 1px solid rgba(124, 58, 237, 0.05) !important;
+  transition: var(--pred-transition) !important;
+  padding: 10px 16px !important;
+}
+
+div[class*="FileRow"]:hover, a[class*="FileRow"]:hover,
+div[class*="FileObjectRow"]:hover, tr[class*="file"]:hover,
+div[class*="file-object"]:hover {
+  background: rgba(124, 58, 237, 0.06) !important;
+  transform: translateX(4px) !important;
+}
+
+/* File icons */
+div[class*="FileRow"] svg, a[class*="FileRow"] svg,
+div[class*="file-object"] svg {
+  color: var(--pred-purple-light) !important;
+  transition: var(--pred-transition) !important;
+}
+
+div[class*="FileRow"]:hover svg, a[class*="FileRow"]:hover svg {
+  color: var(--pred-cyan-light) !important;
+  filter: drop-shadow(0 0 6px rgba(6, 182, 212, 0.4)) !important;
+}
+
+/* Code editor in file manager */
+div[class*="CodeMirror"], div[class*="editor"],
+.cm-editor, .CodeMirror {
+  background: #030306 !important;
+  border-radius: var(--pred-radius-lg) !important;
+  border: 1px solid var(--pred-border) !important;
+  font-family: 'JetBrains Mono', monospace !important;
+}
+
+/* =============================================================================
+   TABLES
+   ============================================================================= */
+
+table {
+  border-collapse: separate !important;
+  border-spacing: 0 4px !important;
+  width: 100% !important;
+}
+
+thead th, thead td {
+  background: rgba(124, 58, 237, 0.06) !important;
+  color: var(--pred-text-secondary) !important;
+  font-weight: 600 !important;
+  font-size: 0.75rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  padding: 12px 16px !important;
+  border: none !important;
+}
+
+thead th:first-child { border-radius: var(--pred-radius-md) 0 0 var(--pred-radius-md) !important; }
+thead th:last-child { border-radius: 0 var(--pred-radius-md) var(--pred-radius-md) 0 !important; }
+
+tbody tr {
+  transition: var(--pred-transition) !important;
+}
+
+tbody tr:hover {
+  background: rgba(124, 58, 237, 0.04) !important;
+}
+
+tbody td {
+  padding: 12px 16px !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(124, 58, 237, 0.04) !important;
+  color: var(--pred-text-primary) !important;
+}
+
+/* =============================================================================
+   CARDS & BOXES (Generic)
+   ============================================================================= */
+
+div[class*="TitledGreyBox"], div[class*="grey-box"],
+div[class*="GreyBox"], div[class*="greybox"],
+div[class*="ContentBox"], div[class*="content-box"],
+div[class*="InnerContainer"] {
+  background: var(--pred-glass-bg) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid var(--pred-border) !important;
+  border-radius: var(--pred-radius-lg) !important;
+  box-shadow: var(--pred-shadow-sm) !important;
+  transition: var(--pred-transition) !important;
+  overflow: hidden !important;
+}
+
+div[class*="TitledGreyBox"]:hover, div[class*="grey-box"]:hover,
+div[class*="GreyBox"]:hover, div[class*="ContentBox"]:hover {
+  border-color: var(--pred-border-hover) !important;
+  box-shadow: var(--pred-shadow-md), var(--pred-shadow-glow) !important;
+}
+
+/* Card titles */
+div[class*="TitledGreyBox"] > div:first-child,
+div[class*="grey-box"] > div:first-child,
+div[class*="box-title"], div[class*="BoxTitle"] {
+  background: rgba(124, 58, 237, 0.05) !important;
+  border-bottom: 1px solid var(--pred-border) !important;
+  padding: 14px 18px !important;
+  font-weight: 700 !important;
+  font-size: 0.85rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  color: var(--pred-text-secondary) !important;
+}
+
+/* =============================================================================
+   MODALS / DIALOGS
+   ============================================================================= */
+
+/* Modal backdrop */
+div[class*="ModalMask"], div[class*="modal-mask"],
+div[class*="modal-backdrop"], div[class*="Overlay"],
+div[role="dialog"]::before {
+  background: rgba(3, 3, 6, 0.85) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+}
+
+/* Modal content */
+div[class*="Modal"] > div, div[class*="modal-content"],
+div[class*="ModalContainer"], div[role="dialog"] > div {
+  background: var(--pred-glass-bg-strong) !important;
+  backdrop-filter: blur(30px) !important;
+  -webkit-backdrop-filter: blur(30px) !important;
+  border: 1px solid var(--pred-border) !important;
+  border-radius: var(--pred-radius-xl) !important;
+  box-shadow: 
+    var(--pred-shadow-lg),
+    0 0 80px rgba(124, 58, 237, 0.1) !important;
+  animation: pred-scale-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Modal title */
+div[class*="Modal"] h2, div[class*="Modal"] h3,
+div[class*="modal"] h2, div[class*="modal"] h3 {
+  font-family: 'Space Grotesk', 'Inter', sans-serif !important;
+  font-weight: 700 !important;
+  color: var(--pred-text-primary) !important;
+  letter-spacing: -0.01em !important;
+}
+
+/* =============================================================================
+   DROPDOWNS & MENUS
+   ============================================================================= */
+
+div[class*="dropdown"], div[class*="Dropdown"],
+ul[class*="dropdown"], div[class*="DropdownMenu"],
+div[class*="context-menu"], div[class*="ContextMenu"],
+div[class*="Popover"] {
+  background: var(--pred-glass-bg-strong) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1px solid var(--pred-border) !important;
+  border-radius: var(--pred-radius-md) !important;
+  box-shadow: 
+    var(--pred-shadow-lg),
+    0 0 40px rgba(0, 0, 0, 0.3) !important;
+  animation: pred-scale-in 0.2s ease-out !important;
+  padding: 6px !important;
+  overflow: hidden !important;
+}
+
+div[class*="dropdown"] a, div[class*="Dropdown"] a,
+div[class*="dropdown"] button, div[class*="Dropdown"] button,
+div[class*="DropdownMenu"] a, div[class*="DropdownMenu"] button {
+  border-radius: var(--pred-radius-sm) !important;
+  padding: 8px 14px !important;
+  transition: var(--pred-transition-fast) !important;
+  color: var(--pred-text-secondary) !important;
+}
+
+div[class*="dropdown"] a:hover, div[class*="Dropdown"] a:hover,
+div[class*="dropdown"] button:hover, div[class*="Dropdown"] button:hover {
+  background: rgba(124, 58, 237, 0.12) !important;
+  color: var(--pred-text-primary) !important;
+}
+
+/* =============================================================================
+   PROGRESS BARS & RESOURCE USAGE
+   ============================================================================= */
+
+div[class*="ProgressBar"], div[class*="progress-bar"],
+div[class*="progress"], div[class*="meter"] {
+  background: rgba(124, 58, 237, 0.08) !important;
+  border-radius: 20px !important;
+  overflow: hidden !important;
+  height: 6px !important;
+}
+
+div[class*="ProgressBar"] > div, div[class*="progress-bar"] > div,
+div[class*="progress"] > div:first-child,
+div[class*="meter"] > div {
+  background: var(--pred-gradient-primary) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 0 12px rgba(124, 58, 237, 0.3) !important;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative !important;
+}
+
+/* Animated shine on progress bars */
+div[class*="ProgressBar"] > div::after, div[class*="progress-bar"] > div::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent) !important;
+  animation: pred-shimmer 2s ease-in-out infinite !important;
+}
+
+/* =============================================================================
+   STATISTICS / USAGE CARDS
+   ============================================================================= */
+
+div[class*="StatBlock"], div[class*="stat-block"],
+div[class*="usage"], div[class*="Usage"],
+div[class*="ServerDetails"] > div {
+  background: var(--pred-glass-bg) !important;
+  border: 1px solid var(--pred-border) !important;
+  border-radius: var(--pred-radius-lg) !important;
+  padding: 18px !important;
+  transition: var(--pred-transition) !important;
+}
+
+div[class*="StatBlock"]:hover, div[class*="stat-block"]:hover,
+div[class*="Usage"]:hover {
+  border-color: var(--pred-border-hover) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: var(--pred-shadow-glow) !important;
+}
+
+/* Stat values */
+div[class*="StatBlock"] span[class*="value"],
+div[class*="stat"] span:first-child,
+div[class*="Usage"] p:first-child {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-weight: 700 !important;
+  font-size: 1.3rem !important;
+  background: var(--pred-gradient-primary) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+/* =============================================================================
+   ALERTS & NOTIFICATIONS
+   ============================================================================= */
+
+/* Info alerts */
+div[class*="alert"], div[class*="Alert"],
+div[class*="MessageBox"], div[class*="notification"] {
+  border-radius: var(--pred-radius-md) !important;
+  border: 1px solid !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  animation: pred-fade-in 0.3s ease-out !important;
+}
+
+div[class*="alert-info"], div[class*="info"],
+div[class*="Alert"][class*="info"] {
+  background: rgba(6, 182, 212, 0.08) !important;
+  border-color: rgba(6, 182, 212, 0.2) !important;
+  color: var(--pred-cyan-light) !important;
+}
+
+div[class*="alert-danger"], div[class*="error"],
+div[class*="Alert"][class*="danger"],
+div[class*="Alert"][class*="error"] {
+  background: rgba(239, 68, 68, 0.08) !important;
+  border-color: rgba(239, 68, 68, 0.2) !important;
+  color: #fca5a5 !important;
+}
+
+div[class*="alert-warning"], div[class*="warning"],
+div[class*="Alert"][class*="warning"] {
+  background: rgba(245, 158, 11, 0.08) !important;
+  border-color: rgba(245, 158, 11, 0.2) !important;
+  color: #fcd34d !important;
+}
+
+div[class*="alert-success"], div[class*="success"],
+div[class*="Alert"][class*="success"] {
+  background: rgba(16, 185, 129, 0.08) !important;
+  border-color: rgba(16, 185, 129, 0.2) !important;
+  color: #6ee7b7 !important;
+}
+
+/* =============================================================================
+   TOAST NOTIFICATIONS (react-hot-toast / react-toastify)
+   ============================================================================= */
+
+div[class*="Toastify"], div[class*="toast"],
+div[class*="Toast"] {
+  background: var(--pred-glass-bg-strong) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1px solid var(--pred-border) !important;
+  border-radius: var(--pred-radius-md) !important;
+  color: var(--pred-text-primary) !important;
+  box-shadow: var(--pred-shadow-lg) !important;
+}
+
+/* =============================================================================
+   PAGINATION
+   ============================================================================= */
+
+div[class*="Pagination"], div[class*="pagination"],
+nav[class*="pagination"] {
+  display: flex !important;
+  gap: 6px !important;
+}
+
+div[class*="Pagination"] button, div[class*="pagination"] a,
+nav[class*="pagination"] a, nav[class*="pagination"] span {
+  background: rgba(124, 58, 237, 0.06) !important;
+  border: 1px solid var(--pred-border) !important;
+  border-radius: var(--pred-radius-sm) !important;
+  color: var(--pred-text-secondary) !important;
+  min-width: 36px !important;
+  height: 36px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: var(--pred-transition-fast) !important;
+}
+
+div[class*="Pagination"] button:hover, div[class*="pagination"] a:hover {
+  background: rgba(124, 58, 237, 0.15) !important;
+  border-color: var(--pred-border-hover) !important;
+  color: var(--pred-text-primary) !important;
+}
+
+div[class*="Pagination"] button[class*="active"],
+div[class*="pagination"] a[class*="active"],
+nav[class*="pagination"] span[class*="current"] {
+  background: var(--pred-gradient-primary) !important;
+  border-color: transparent !important;
+  color: white !important;
+  box-shadow: 0 0 15px rgba(124, 58, 237, 0.3) !important;
+}
+
+/* =============================================================================
+   TABS & PILL NAVIGATION
+   ============================================================================= */
+
+div[class*="Tabs"], div[class*="tabs"],
+div[role="tablist"] {
+  border-bottom: 1px solid var(--pred-border) !important;
+  background: transparent !important;
+}
+
+div[class*="Tab"] a, div[class*="tab"] a,
+button[role="tab"] {
+  color: var(--pred-text-muted) !important;
+  font-weight: 500 !important;
+  transition: var(--pred-transition) !important;
+  padding: 12px 18px !important;
+  border-bottom: 2px solid transparent !important;
+  position: relative !important;
+}
+
+div[class*="Tab"] a:hover, button[role="tab"]:hover {
+  color: var(--pred-text-primary) !important;
+  background: rgba(124, 58, 237, 0.04) !important;
+}
+
+div[class*="Tab"] a[class*="active"],
+button[role="tab"][aria-selected="true"],
+div[class*="Tab"] a.active {
+  color: var(--pred-purple-light) !important;
+  border-bottom-color: var(--pred-purple) !important;
+  background: rgba(124, 58, 237, 0.06) !important;
+}
+
+/* =============================================================================
+   BADGES & TAGS
+   ============================================================================= */
+
+span[class*="badge"], span[class*="Badge"],
+span[class*="tag"], span[class*="Tag"],
+div[class*="Chip"] {
+  background: rgba(124, 58, 237, 0.12) !important;
+  border: 1px solid rgba(124, 58, 237, 0.2) !important;
+  border-radius: 20px !important;
+  padding: 3px 10px !important;
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  color: var(--pred-purple-light) !important;
+  letter-spacing: 0.03em !important;
+}
+
+/* =============================================================================
+   TOOLTIPS
+   ============================================================================= */
+
+div[class*="tooltip"], div[class*="Tooltip"],
+[data-tooltip] {
+  background: var(--pred-glass-bg-strong) !important;
+  backdrop-filter: blur(16px) !important;
+  border: 1px solid var(--pred-border) !important;
+  border-radius: var(--pred-radius-sm) !important;
+  color: var(--pred-text-primary) !important;
+  font-size: 0.8rem !important;
+  box-shadow: var(--pred-shadow-md) !important;
+  padding: 6px 12px !important;
+}
+
+/* =============================================================================
+   SVG ICONS — GLOBAL STYLE
+   ============================================================================= */
+
+svg:not(.xterm-cursor) {
+  transition: var(--pred-transition-fast) !important;
+}
+
+a:hover svg, button:hover svg {
+  filter: drop-shadow(0 0 4px rgba(124, 58, 237, 0.3)) !important;
+}
+
+/* =============================================================================
+   SKELETON / LOADING
+   ============================================================================= */
+
+div[class*="Skeleton"], div[class*="skeleton"],
+div[class*="placeholder"], div[class*="loading-placeholder"] {
+  background: linear-gradient(90deg, 
+    var(--pred-bg-secondary) 25%, 
+    rgba(124, 58, 237, 0.06) 50%, 
+    var(--pred-bg-secondary) 75%) !important;
+  background-size: 200% 100% !important;
+  animation: pred-shimmer 1.5s ease-in-out infinite !important;
+  border-radius: var(--pred-radius-sm) !important;
+}
+
+/* =============================================================================
+   SPINNER / LOADING ANIMATION  
+   ============================================================================= */
+
+div[class*="Spinner"], div[class*="spinner"],
+svg[class*="spinner"], svg[class*="Spinner"] {
+  color: var(--pred-purple) !important;
+  filter: drop-shadow(0 0 8px rgba(124, 58, 237, 0.3)) !important;
+}
+
+/* =============================================================================
+   ADMIN AREA SPECIFIC
+   ============================================================================= */
+
+/* Admin sidebar */
+div[class*="admin"] aside,
+div[class*="Admin"] aside {
+  background: var(--pred-bg-sidebar) !important;
+  border-right: 1px solid var(--pred-border) !important;
+}
+
+/* Admin cards */
+div[class*="admin"] div[class*="Card"],
+div[class*="Admin"] div[class*="box"] {
+  background: var(--pred-glass-bg) !important;
+  border: 1px solid var(--pred-border) !important;
+  border-radius: var(--pred-radius-lg) !important;
+}
+
+/* =============================================================================
+   SCHEDULE / CRON EDITOR
+   ============================================================================= */
+
+div[class*="Schedule"], div[class*="schedule"],
+div[class*="Cron"], div[class*="cron"] {
+  background: var(--pred-glass-bg) !important;
+  border: 1px solid var(--pred-border) !important;
+  border-radius: var(--pred-radius-lg) !important;
+}
+
+/* =============================================================================
+   DATABASE / BACKUP CARDS
+   ============================================================================= */
+
+div[class*="Database"], div[class*="database"],
+div[class*="Backup"], div[class*="backup"] {
+  background: var(--pred-glass-bg) !important;
+  border: 1px solid var(--pred-border) !important;
+  border-radius: var(--pred-radius-lg) !important;
+  transition: var(--pred-transition) !important;
+}
+
+div[class*="Database"]:hover, div[class*="Backup"]:hover {
+  border-color: var(--pred-border-hover) !important;
+  box-shadow: var(--pred-shadow-glow) !important;
+}
+
+/* =============================================================================
+   NETWORK / ALLOCATION
+   ============================================================================= */
+
+div[class*="Allocation"], div[class*="allocation"],
+div[class*="Network"], div[class*="network"] {
+  background: var(--pred-glass-bg) !important;
+  border: 1px solid var(--pred-border) !important;
+  border-radius: var(--pred-radius-md) !important;
+}
+
+/* IP / Port highlight */
+code, pre, span[class*="mono"], span[class*="code"] {
+  font-family: 'JetBrains Mono', monospace !important;
+  background: rgba(124, 58, 237, 0.08) !important;
+  padding: 2px 8px !important;
+  border-radius: 6px !important;
+  color: var(--pred-cyan-light) !important;
+  font-size: 0.85em !important;
+  border: 1px solid rgba(124, 58, 237, 0.1) !important;
+}
+
+/* =============================================================================
+   FOOTER
+   ============================================================================= */
+
+footer, div[class*="Footer"], div[class*="footer"] {
+  background: transparent !important;
+  border-top: 1px solid var(--pred-border) !important;
+  color: var(--pred-text-muted) !important;
+  font-size: 0.8rem !important;
+}
+
+footer a, div[class*="Footer"] a {
+  color: var(--pred-purple-light) !important;
+  transition: var(--pred-transition-fast) !important;
+}
+
+footer a:hover, div[class*="Footer"] a:hover {
+  color: var(--pred-cyan-light) !important;
+  text-decoration: none !important;
+}
+
+/* =============================================================================
+   FLASH MESSAGES / ERROR PAGES
+   ============================================================================= */
+
+div[class*="flash"], div[class*="Flash"],
+div[class*="error-page"], div[class*="not-found"] {
+  background: var(--pred-glass-bg) !important;
+  border-radius: var(--pred-radius-xl) !important;
+  border: 1px solid var(--pred-border) !important;
+}
+
+/* Error message on screen */
+p[class*="error"], div[class*="error-message"] {
+  color: #fca5a5 !important;
+  background: rgba(239, 68, 68, 0.06) !important;
+  border: 1px solid rgba(239, 68, 68, 0.15) !important;
+  border-radius: var(--pred-radius-md) !important;
+  padding: 12px 16px !important;
+}
+
+/* =============================================================================
+   BACKGROUND PATTERN — Subtle grid
+   ============================================================================= */
+
+#app::before {
+  content: '' !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background-image: 
+    linear-gradient(rgba(124, 58, 237, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 58, 237, 0.02) 1px, transparent 1px) !important;
+  background-size: 60px 60px !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%) !important;
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%) !important;
+}
+
+/* =============================================================================
+   UTILITY OVERRIDES — Colors commonly used in Pterodactyl
+   ============================================================================= */
+
+/* Background colors */
+.bg-neutral-900 { background-color: var(--pred-bg-primary) !important; }
+.bg-neutral-800 { background-color: var(--pred-bg-secondary) !important; }
+.bg-neutral-700 { background-color: var(--pred-bg-tertiary) !important; }
+.bg-neutral-600 { background-color: var(--pred-bg-card) !important; }
+.bg-gray-900 { background-color: var(--pred-bg-primary) !important; }
+.bg-gray-800 { background-color: var(--pred-bg-secondary) !important; }
+.bg-gray-700 { background-color: var(--pred-bg-tertiary) !important; }
+.bg-gray-600 { background-color: var(--pred-bg-card) !important; }
+
+/* Text colors */
+.text-neutral-100, .text-gray-100 { color: var(--pred-text-primary) !important; }
+.text-neutral-200, .text-gray-200 { color: var(--pred-text-primary) !important; }
+.text-neutral-300, .text-gray-300 { color: var(--pred-text-secondary) !important; }
+.text-neutral-400, .text-gray-400 { color: var(--pred-text-secondary) !important; }
+.text-neutral-500, .text-gray-500 { color: var(--pred-text-muted) !important; }
+
+/* Override gray backgrounds to our dark theme */
+[class*="bg-gray-5"], [class*="bg-neutral-5"] {
+  background-color: var(--pred-bg-card) !important;
+}
+
+/* Generic containers with gray bg */
+div[class*="grey"], div[class*="Gray"],
+div[class*="gray"] {
+  background: var(--pred-bg-card) !important;
+}
+
+/* =============================================================================
+   RESPONSIVE TWEAKS
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  a[class*="ServerRow"], div[class*="ServerRow"],
+  a[class*="ServerCard"] {
+    border-radius: var(--pred-radius-md) !important;
+    padding: 14px 16px !important;
+    margin-bottom: 8px !important;
+  }
+  
+  div[class*="TitledGreyBox"],
+  div[class*="ContentBox"] {
+    border-radius: var(--pred-radius-md) !important;
+  }
+  
+  div[class*="Modal"] > div,
+  div[class*="modal-content"] {
+    border-radius: var(--pred-radius-lg) !important;
+    margin: 8px !important;
+  }
+}
+
+/* =============================================================================
+   TRANSITION OVERRIDE — Smooth everything
+   ============================================================================= */
+
+*, *::before, *::after {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+a, button, input, select, textarea, div[class*="Row"], div[class*="Card"] {
+  transition-duration: 0.25s !important;
+}
+
+/* =============================================================================
+   ACCESSIBILITY — Focus states
+   ============================================================================= */
+
+*:focus-visible {
+  outline: 2px solid var(--pred-purple) !important;
+  outline-offset: 2px !important;
+  border-radius: var(--pred-radius-sm) !important;
+}
+
+/* =============================================================================
+   PRINT — Clean print styles
+   ============================================================================= */
+
+@media print {
+  body::before, #app::before { display: none !important; }
+  * { 
+    background: white !important; 
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+}
