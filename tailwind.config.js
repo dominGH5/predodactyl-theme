@@ -4,6 +4,9 @@
 //
 // INSTRUKCJA: Podmień istniejący tailwind.config.js w katalogu głównym
 //             Pterodactyl Panel na ten plik.
+//
+// Ten plik zachowuje WSZYSTKIE oryginalne klasy Pterodactyla (text-2xs,
+// font-header, itp.) i dodaje kolory/animacje motywu Predodactyl.
 // =============================================================================
 
 const defaultTheme = require('tailwindcss/defaultTheme');
@@ -46,7 +49,7 @@ module.exports = {
         'status-starting': '#f59e0b',
         'status-stopping': '#f97316',
 
-        // Generic overrides for Pterodactyl
+        // Override Pterodactyl primary → purple theme
         primary: {
           50: '#f0edff',
           100: '#ddd6ff',
@@ -59,6 +62,7 @@ module.exports = {
           800: '#312080',
           900: '#1f1554',
         },
+        // Override Pterodactyl neutral → dark theme
         neutral: {
           50: '#e4e4ed',
           100: '#c8c8d8',
@@ -72,12 +76,33 @@ module.exports = {
           900: '#111118',
           950: '#0a0a0f',
         },
+        // Pterodactyl original cyan override
+        cyan: {
+          50: '#e0faff',
+          100: '#b8f3ff',
+          200: '#7aebff',
+          300: '#33ddff',
+          400: '#00d4ff',
+          500: '#00a8cc',
+          600: '#0087a3',
+          700: '#006680',
+          800: '#00455c',
+          900: '#002436',
+        },
       },
 
       // ---- Fonts ----
+      // font-header + font-sans — required by Pterodactyl's twin.macro classes
       fontFamily: {
-        sans: ['Inter', ...defaultTheme.fontFamily.sans],
-        mono: ['JetBrains Mono', 'Fira Code', ...defaultTheme.fontFamily.mono],
+        header: ['"IBM Plex Sans"', '"Rubik"', 'Inter', ...defaultTheme.fontFamily.sans],
+        sans: ['Inter', '"Rubik"', '"IBM Plex Sans"', ...defaultTheme.fontFamily.sans],
+        mono: ['"JetBrains Mono"', '"IBM Plex Mono"', '"Fira Code"', ...defaultTheme.fontFamily.mono],
+      },
+
+      // ---- Font Size ----
+      // text-2xs — required by Pterodactyl components (UserRow, etc.)
+      fontSize: {
+        '2xs': ['0.625rem', { lineHeight: '0.875rem' }],
       },
 
       // ---- Spacing ----
@@ -85,6 +110,16 @@ module.exports = {
         sidebar: '240px',
         'sidebar-collapsed': '72px',
         navbar: '64px',
+      },
+
+      // ---- Border Width ----
+      // Pterodactyl uses border-DEFAULT override
+      borderWidth: {
+        DEFAULT: '1px',
+        0: '0px',
+        2: '2px',
+        4: '4px',
+        8: '8px',
       },
 
       // ---- Border Radius ----
@@ -99,14 +134,22 @@ module.exports = {
 
       // ---- Box Shadow ----
       boxShadow: {
+        // Pterodactyl original shadows
+        none: 'none',
+        sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+        DEFAULT: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+        md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+        lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+        xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+        '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+        inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
+        // Predodactyl custom shadows
         card: '0 4px 24px rgba(0, 0, 0, 0.3)',
-        'card-hover':
-          '0 8px 40px rgba(108, 71, 255, 0.15), 0 4px 24px rgba(0, 0, 0, 0.3)',
+        'card-hover': '0 8px 40px rgba(108, 71, 255, 0.15), 0 4px 24px rgba(0, 0, 0, 0.3)',
         glow: '0 0 30px rgba(108, 71, 255, 0.2)',
         'glow-cyan': '0 0 30px rgba(0, 212, 255, 0.2)',
         input: '0 2px 8px rgba(0, 0, 0, 0.2)',
-        'input-focus':
-          '0 0 0 3px rgba(108, 71, 255, 0.15), 0 2px 8px rgba(0, 0, 0, 0.2)',
+        'input-focus': '0 0 0 3px rgba(108, 71, 255, 0.15), 0 2px 8px rgba(0, 0, 0, 0.2)',
         navbar: '0 2px 20px rgba(0, 0, 0, 0.4)',
         dropdown: '0 8px 40px rgba(0, 0, 0, 0.5)',
       },
@@ -114,12 +157,9 @@ module.exports = {
       // ---- Background Gradient ----
       backgroundImage: {
         'gradient-primary': 'linear-gradient(135deg, #6c47ff 0%, #00d4ff 100%)',
-        'gradient-card':
-          'linear-gradient(145deg, rgba(108, 71, 255, 0.05) 0%, rgba(0, 212, 255, 0.03) 100%)',
-        'gradient-glow':
-          'radial-gradient(ellipse at center, rgba(108, 71, 255, 0.15) 0%, transparent 70%)',
-        'gradient-bg':
-          'radial-gradient(ellipse at 20% 50%, rgba(108, 71, 255, 0.08) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(0, 212, 255, 0.06) 0%, transparent 50%)',
+        'gradient-card': 'linear-gradient(145deg, rgba(108, 71, 255, 0.05) 0%, rgba(0, 212, 255, 0.03) 100%)',
+        'gradient-glow': 'radial-gradient(ellipse at center, rgba(108, 71, 255, 0.15) 0%, transparent 70%)',
+        'gradient-bg': 'radial-gradient(ellipse at 20% 50%, rgba(108, 71, 255, 0.08) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(0, 212, 255, 0.06) 0%, transparent 50%)',
       },
 
       // ---- Backdrop Blur ----
@@ -188,7 +228,7 @@ module.exports = {
     },
   },
   plugins: [
-    // Custom plugin for glassmorphism utility
+    // Custom plugin for glassmorphism + Predodactyl utilities
     function ({ addUtilities }) {
       addUtilities({
         '.glass': {
